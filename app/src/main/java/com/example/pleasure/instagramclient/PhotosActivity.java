@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 public class PhotosActivity extends ActionBarActivity {
 
-    //public static final String CLIENT_ID = "";
     public static final String CLIENT_ID = "";
     private ArrayList<InstagramPhoto> photos;
     private InstagramPhotosAdapter aPhotos;
@@ -89,7 +88,7 @@ public class PhotosActivity extends ActionBarActivity {
                         JSONObject photoJSON = photosJSON.getJSONObject(i);
                         // decode the attributes of the json into a data model
                         InstagramPhoto photo = new InstagramPhoto();
-                        photo.username = photoJSON.getJSONObject("user").getString("username");
+                        photo.username = photoJSON.getJSONObject("user").getString("username") + " <" + photoJSON.getJSONObject("user").getString("full_name")+ ">";
                         photo.caption = photoJSON.getJSONObject("caption").getString("text");
                         photo.imageType = photoJSON.getString("type");
                         photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");

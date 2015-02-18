@@ -37,6 +37,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         }
         // lookup the views for populating the data
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
 
 
@@ -44,8 +45,10 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         // insert the image using Picasso.  While waiting, clear out the imageview
         ivPhoto.setImageResource(0);
         Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
-        //Picasso.with(getContext()).load(photo.imageUrl).fit().center(rop().placeholder.ic_launcher).into(ivPhoto);
+        //Picasso.with(getContext()).load(photo.imageUrl).fit().centerCrop().into(ivPhoto);
+        //Picasso.with(getContext()).load(photo.imageUrl).fit().centerCrop().placeholder(ic_launcher).into(ivPhoto);
 
+        tvUsername.setText(photo.username);
         tvCaption.setText(photo.caption);
 
         // return the created item as a view
